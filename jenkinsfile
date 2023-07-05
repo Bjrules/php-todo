@@ -20,9 +20,9 @@ pipeline {
     stage('Prepare Dependencies') {
       steps {
              sh 'mv .env.sample .env'
-             sh 'curl -sS https://getcomposer.org/installer | php'
-             sh 'sudo mv composer.phar /usr/local/bin/composer'
-             sh 'chmod +x /usr/local/bin/composer'
+            //  sh 'curl -sS https://getcomposer.org/installer | php'
+            //  sh 'mv composer.phar /usr/local/bin/composer'
+            //  sh 'chmod +x /usr/local/bin/composer'
              sh 'composer -V'
              sh 'composer self-update'
              sh 'php artisan migrate'

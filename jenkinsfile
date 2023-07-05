@@ -21,8 +21,6 @@ pipeline {
       steps {
              sh 'mv .env.sample .env'
              sh 'php composer-setup.php --filename=composer'
-             sh 'php -r "unlink('composer-setup.php');"'
-             sh 'php composer.phar install'
              sh 'php artisan migrate'
              sh 'php artisan db:seed'
              sh 'php artisan key:generate'

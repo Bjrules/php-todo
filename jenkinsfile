@@ -41,7 +41,7 @@ pipeline {
 
       }
     }
-    
+
      stage('Plot Code Coverage Report') {
       steps {
 
@@ -62,7 +62,7 @@ pipeline {
 
     stage('SonarQube Quality Gate') {
         environment {
-            scannerHome = tool 'SonarQubeScanner'
+            scannerHome = tool 'SonarQubeSCANNER'
         }
         steps {
             withSonarQubeEnv('sonarqube') {

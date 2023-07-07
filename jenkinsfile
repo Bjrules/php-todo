@@ -20,6 +20,7 @@ pipeline {
     stage('Prepare Dependencies') {
       steps {
              sh 'mv .env.sample .env'
+             // encure you perform the 'commented lines' from terminal while you also ensure that the database server is configured and running
             //  sh 'curl -sS https://getcomposer.org/installer | php'
             //  sh 'mv composer.phar /usr/local/bin/composer'
              sh 'php composer install'

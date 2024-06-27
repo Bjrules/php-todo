@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('SCM checkout'){
             steps{
-                echo "Hello World!"//checkout scmGit(branches: [[name: '*/project20-jenkins-Docker']], extensions: [], userRemoteConfigs: [[credentialsId: 'f6b9bcd1-04ab-4fc1-bb95-b0d0fc5d4df4', url: 'https://github.com/Bjrules/php-todo.git']])
+                checkout scmGit(branches: [[name: '*/project20-jenkins-Docker']], extensions: [], userRemoteConfigs: [[credentialsId: '8a36c3a3-6603-4e9d-9cf8-049594262ac1', url: 'https://github.com/Bjrules/php-todo']])
             }
         }
     }

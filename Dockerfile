@@ -18,7 +18,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 COPY . /var/www/html
 RUN mv .env.sample .env
 
-# Expose port 8000 for the Laravel development server
+# Expose port 8000 for the Laravel development server.
 EXPOSE 8000
 
 # Define the command to start the Laravel development server.

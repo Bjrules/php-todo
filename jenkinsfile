@@ -2,9 +2,9 @@ pipeline{
     agent any
 
     stages{
-        stage("Helloo World"){
+        stage("Git Checkout"){
             steps{
-                echo "Hello World"
+                git branch: 'project20-jenkins-Docker', credentialsId: 'Github', url: 'https://github.com/Bjrules/php-todo.git'
             }
         }
     

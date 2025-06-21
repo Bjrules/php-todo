@@ -7,5 +7,29 @@ pipeline{
                 echo "Hello World"
             }
         }
+    
+        stage("Helloo World"){
+            steps{
+                echo "Hello World"
+            }
+        }
+
+        stage("Helloo World"){
+            steps{
+                echo "Hello World"
+            }
+        }
+
+        stage("Helloo World"){
+            steps{
+                echo "Hello World"
+            }
+        }
+
+        stage("Helloo World"){
+            steps{
+                echo "Hello World"
+            }
+        }
     }
 }

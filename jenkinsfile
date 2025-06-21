@@ -8,25 +8,25 @@ pipeline{
             }
         }
     
-        stage("Helloo World"){
+        stage("West Wood"){
             steps{
-                echo "Hello World"
+                echo "West Wood"
             }
         }
 
-        stage("Helloo World"){
+        stage("Banjo"){
             steps{
-                echo "Hello World"
+                echo "Banjo Babade"
             }
         }
 
-        stage("Helloo World"){
+        stage("Banke babade"){
             steps{
-                echo "Hello World"
+                echo "Banke"
             }
         }
 
-        stage("Helloo World"){
+        stage("David babson"){
             steps{
                 echo "Hello World"
             }

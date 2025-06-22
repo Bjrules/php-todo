@@ -19,7 +19,7 @@ pipeline{
             steps {
                 script {
 
-                    withDockerRegistry(credentialsId: 'Dockerhub-login') {
+                    withDockerRegistry(credentialsId: 'docker-login') {
                         sh "docker build -t bjrules/phptodo:$IMAGE_TAG ."
  
                     }
@@ -33,7 +33,7 @@ pipeline{
             steps {
                 script {
 
-                    withDockerRegistry(credentialsId: 'Dockerhub-login') {
+                    withDockerRegistry(credentialsId: 'docker-login') {
                         sh "docker push bjrules/phptodo:$IMAGE_TAG"
  
                     }

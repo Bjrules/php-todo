@@ -5,7 +5,7 @@ pipeline{
         DOCKER_REGISTRY = 'index.docker.io'  // e.g., index.docker.io or your private registry
         DOCKER_IMAGE = "${DOCKER_REGISTRY}/bjrules/php-app"
         IMAGE_TAG = "${env.BUILD_NUMBER}"
-        DOCKER_CREDENTIALS_ID = 'docker-credentials-id' // ID of Jenkins credentials (Username + Password)
+        DOCKER_CREDENTIALS_ID = 'Dockerhub-login' // ID of Jenkins credentials (Username + Password)
     }
     stages{
         stage("Git Checkout"){

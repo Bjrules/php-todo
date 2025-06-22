@@ -14,24 +14,19 @@ pipeline{
                 git branch: 'project20-jenkins-Docker', credentialsId: 'Github', url: 'https://github.com/Bjrules/php-todo.git'
             }
         }
-    
-         stage('Build Docker Image') {
+
+          stage('Build Image') {
             steps {
                 script {
-                    dockerImage = docker.build("${DOCKER_IMAGE}:${IMAGE_TAG}")
+
+                    withDockerRegistry(credentialsId: 'Dockerhub-login') {
+                        sh "docker build -t bjrules/phptodo:$IMAGE_TAG ."
+ 
+                    }
+                  
                 }
             }
         }
-
-        //  stage('Login to Registry') {
-        //     steps {
-        //         script {
-        //             docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
-        //                 echo "Logged in to Docker registry"
-        //             }
-        //         }
-        //     }
-        // }
 
 
           stage('Push Image') {
@@ -39,14 +34,10 @@ pipeline{
                 script {
 
                     withDockerRegistry(credentialsId: 'Dockerhub-login') {
+                        sh "docker push bjrules/phptodo:$IMAGE_TAG"
  
                     }
-
-                    // docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
-                    //     dockerImage.push()
-                    //     // Optionally push 'latest' tag too
-                    //     dockerImage.push('latest')
-                    // }
+                  
                 }
             }
         }

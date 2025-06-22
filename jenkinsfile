@@ -44,7 +44,7 @@ pipeline{
                 }
             }
         }
-
+    }
          post {
         success {
             echo "PHP app Docker image pushed successfully: ${DOCKER_IMAGE}:${IMAGE_TAG}"

@@ -1,6 +1,12 @@
 pipeline{
     agent any
 
+    environment {
+        DOCKER_REGISTRY = 'index.docker.io'  // e.g., index.docker.io or your private registry
+        DOCKER_IMAGE = "${DOCKER_REGISTRY}/bjrules/php-app"
+        IMAGE_TAG = "${env.BUILD_NUMBER}"
+        DOCKER_CREDENTIALS_ID = 'docker-credentials-id' // ID of Jenkins credentials (Username + Password)
+
     stages{
         stage("Git Checkout"){
             steps{
@@ -8,28 +14,45 @@ pipeline{
             }
         }
     
-        stage("West Wood"){
-            steps{
-                echo "West Wood"
+         stage('Build Docker Image') {
+            steps {
+                script {
+                    dockerImage = docker.build("${DOCKER_IMAGE}:${IMAGE_TAG}")
+                }
             }
         }
 
-        stage("Banjo"){
-            steps{
-                echo "Banjo Babade"
+         stage('Login to Registry') {
+            steps {
+                script {
+                    docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
+                        echo "Logged in to Docker registry"
+                    }
+                }
             }
         }
 
-        stage("Banke babade"){
-            steps{
-                echo "Banke"
+
+          stage('Push Image') {
+            steps {
+                script {
+                    docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
+                        dockerImage.push()
+                        // Optionally push 'latest' tag too
+                        dockerImage.push('latest')
+                    }
+                }
             }
         }
 
-        stage("David babson"){
-            steps{
-                echo "Hello World"
-            }
+         post {
+        success {
+            echo "PHP app Docker image pushed successfully: ${DOCKER_IMAGE}:${IMAGE_TAG}"
+        }
+        failure {
+            echo "Build failed"
         }
     }
+    }
+}
 }

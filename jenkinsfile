@@ -3,7 +3,7 @@ pipeline{
 
     environment {
         IMAGE_TAG = "${env.BUILD_NUMBER}"
-        DOCKER_CREDENTIALS_ID = 'Dockerhub-login' // ID of Jenkins credentials (Username + Password)
+     // DOCKER_CREDENTIALS_ID = 'Dockerhub-login' // ID of Jenkins credentials (Username + Password)
     }
     // In java make sure you define the maven as the compile tool
     stages{

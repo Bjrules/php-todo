@@ -2,9 +2,9 @@ pipeline{
     agent any
 
     environment {
-        // DOCKER_REGISTRY = 'hub.docker.com'  // e.g., index.docker.io or your private registry
+         //DOCKER_REGISTRY = 'index.docker.io'  // e.g., index.docker.io or your private registry
         //DOCKER_IMAGE = "${DOCKER_REGISTRY}/bjrules/php-app"
-        IMAGE_TAG = "${env.BUILD_NUMBER}"
+        IMAGE_TAG = "$v{BUILD_NUMBER}"
         DOCKER_CREDENTIALS_ID = 'Dockerhub-login' // ID of Jenkins credentials (Username + Password)
     }
     // In java make sure you define the maven as the compile tool

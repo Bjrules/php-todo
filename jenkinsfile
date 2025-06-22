@@ -22,28 +22,28 @@ pipeline{
             }
         }
 
-         stage('Login to Registry') {
-            steps {
-                script {
-                    docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
-                        echo "Logged in to Docker registry"
-                    }
-                }
-            }
-        }
+        //  stage('Login to Registry') {
+        //     steps {
+        //         script {
+        //             docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
+        //                 echo "Logged in to Docker registry"
+        //             }
+        //         }
+        //     }
+        // }
 
 
-          stage('Push Image') {
-            steps {
-                script {
-                    docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
-                        dockerImage.push()
-                        // Optionally push 'latest' tag too
-                        dockerImage.push('latest')
-                    }
-                }
-            }
-        }
+        //   stage('Push Image') {
+        //     steps {
+        //         script {
+        //             docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
+        //                 dockerImage.push()
+        //                 // Optionally push 'latest' tag too
+        //                 dockerImage.push('latest')
+        //             }
+        //         }
+        //     }
+        // }
     }
          post {
         success {

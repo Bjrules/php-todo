@@ -2,8 +2,8 @@ pipeline{
     agent any
 
     environment {
-        DOCKER_REGISTRY = 'hub.docker.com'  // e.g., index.docker.io or your private registry
-        DOCKER_IMAGE = "${DOCKER_REGISTRY}/bjrules/php-app"
+        // DOCKER_REGISTRY = 'hub.docker.com'  // e.g., index.docker.io or your private registry
+        //DOCKER_IMAGE = "${DOCKER_REGISTRY}/bjrules/php-app"
         IMAGE_TAG = "${env.BUILD_NUMBER}"
         DOCKER_CREDENTIALS_ID = 'Dockerhub-login' // ID of Jenkins credentials (Username + Password)
     }
@@ -42,13 +42,13 @@ pipeline{
             }
         }
     }
-         post {
-        success {
-            echo "PHP app Docker image pushed successfully: ${DOCKER_IMAGE}:${IMAGE_TAG}"
-        }
-        failure {
-            echo "Build failed"
-        }
-    }
+    //      post {
+    //     success {
+    //         echo "PHP app Docker image pushed successfully: ${DOCKER_IMAGE}:${IMAGE_TAG}"
+    //     }
+    //     failure {
+    //         echo "Build failed"
+    //     }
+    // }
     }
 
